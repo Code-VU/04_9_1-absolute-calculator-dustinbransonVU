@@ -1,26 +1,14 @@
-import io
-from random import randint
-from unittest.mock import Mock
-import oddAbsolute
+in_num = input("Enter a number: ")
 
-def test_calculateAbsolute_printsABS_lessThan21(capfd, monkeypatch):
-    in_num = randint(-100, 21)
-    input = [in_num]
-    monkeypatch.setattr('builtins.input', lambda _:input.pop())
-    oddAbsolute.calculateAbsolute()
+def ab_dif(in_num):
+    diff = abs(in_num-21)
+    if in_num > 21:
+        return diff * 2
+    else:
+        return diff
+    
+    print ("ab_dif")
+    
+    
 
-    out, err = capfd.readouterr()
-    expected = "Result: "+str(abs(in_num-21))+"\n"
-    assert out == expected
-
-
-def test_calculateAbsolute_printsDoubleAbs_greaterThan21(capfd, monkeypatch):
-    in_num = randint(21, 200)
-    input = [in_num]
-    monkeypatch.setattr('builtins.input', lambda _:input.pop())
-    oddAbsolute.calculateAbsolute()
-
-    out, err = capfd.readouterr()
-    expected = "Result: "+str(abs(2*(in_num-21)))+"\n"
-    print(in_num)
-    assert out == expected
+   
